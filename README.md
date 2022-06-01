@@ -190,3 +190,8 @@ Note, if the mission fails to be received, try these steps:
 ### Updating the Mission
 
 Open the src `mission.cpp` file in the `mavpx4-csi/test/mavpx4-mission` folder. You'll see methods defining the MAVLink commands and instantiating the Tangram Maker MAVLink serializer. Scroll down to the main function. Here you'll see the 5 MAVLink commands that were sent to PX4. You can change the coordinates or add more way points.  If you do add more, update the mission count to match the number of commands you have. Return to the `mavpx4-mission` Terminal window, run `make` to build the updated app and then `./mission` to fly your new mission.
+
+
+### Resources
+For additional information about Tangram Maker, check out the tutorials on [Tangram's Docs Site](https://docs.tangramflex.io/docs/tutorials/visualize_a_Component_based_system_design). I’m the moderator on our forum, https://discuss.tangramflex.io/ and am always happy to hear what you’re working on and help through problems.
+
