@@ -19,7 +19,13 @@ Download and install [**VirtualBox**](https://www.virtualbox.org/). **Linux Ubun
 
 ## Generating a MAVLink Interface in Tangram Maker 
 
-Go to **https://maker.tangramflex.io/** and log in. Create a team if you haven't already: Go to **Teams** and click the **New Team** button.
+The component-based system we'll be working with consists of a ground control station component, and a drone component. The steps below will set up these software components and get them to talk to each other. The drone in this example will be simulated on your computer, allowing you to test your mission code. In a future project we'll swap the simulated drone with a real drone since the ground control station component we'll create is compatible with any PX4-powered drone.
+
+To start, let's use Tangram Maker to automatically generate a MAVLink Interface. This generated interface will serialize command messages and send the data to a PX4 socket. This process converts the messages into packets of bytes formatted according to MAVLink's over-the-wire specifications.
+
+![Interface Diagram](/img/interface-diagram.png)
+
+**First, go to https://maker.tangramflex.io/ and log in. Create a team if you haven't already: Go to *Teams* and click the *New Team* button.**
 
 In Tangram Maker, ***Components*** are the basic building blocks of a system. They are reusable elements that can stand alone as a single function or be connected with other components to extend capabilities. To model our MAVLink <> Drone system we'll create three components.
 
@@ -94,6 +100,8 @@ With two components now in your workspace, it's time to connect them up. This st
 3. Click the **Done** button, or click back into the workspace to close the connections panel
 4. Make sure to save the changes to your workspace, if it hasn't saved automatically
 
+![Connections](/img/maker-design.png)
+
 ### Step 5: Generate MAVLink Interface Code
 
 Now that you have a component based system design all wired up, it's time to to generate a *Component Software Interface* (CSI) - code that will allow components to pass the messages you specified to other components or systems. Tangram Maker's generated CSI is fully executable and saves you a ton of time, automatically creating the tedious communications code for you.
@@ -119,6 +127,8 @@ Next we'll open the MAVLinkGCS component and create a workflow to generate C++ c
     - You should now see line between the two plugins
 9. Click **Save Changes** in the top right, and then **Close**
 10. Now click **Run**!
+
+![Generating Code](/img/code-gen.gif)
 
 The interface code generation and build process has begun! Streaming logs are shown while it runs, it'll take a few minutes to complete.
 
@@ -169,6 +179,8 @@ Now you have a built `mission` app, the MAVLink GCS Interface ready to go, as we
 2. You should see the mission be received in the Terminal window that's running PX4, and then the drone take flight! 
 
 The drone will take off, fly to three way points and then land.  
+
+![Drone Simulator](/img/drone-simulator.gif)
 
 Note, if the mission fails to be received, try these steps:
 1. Press Ctrl+C in both the mavpx4-mission and PX4 Terminal windows to cancel them
